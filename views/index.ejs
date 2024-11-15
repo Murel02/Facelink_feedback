@@ -9,21 +9,22 @@
 <h1>Face view</h1>
 <a href="/newPost">Create post</a>
 <ul>
-    <% users.forEach(post => { %>
+    <% posts.forEach(post => { %>
         <li>
-            <span class="label"></span> <% post.id %>
-            <span class="label"></span> <% post.text %>
-            <span class="label">Time</span> <% post.timestamp %>
-            <span class="label">Likes</span> <% post.likes %>
-            <form action="/post/<%= post.id %>/like" method="GET" style="display: inline;">
+            <span class="label">Post ID:</span> <%= post.id %><br>
+            <span class="label">Text:</span> <%= post.text %><br>
+            <span class="label">Time:</span> <%= new Date(post.timestamp).toLocaleString() %><br>
+            <span class="label">Likes:</span> <%= post.likes %><br>
+            <form action="/posts/<%= post.id %>/like" method="POST" style="display: inline;">
                 <button type="submit">Like</button>
             </form>
-            <form action="/post/<%= post.id %>/delete" method="POST" style="display: inline;">
+            <form action="/posts/<%= post.id %>/delete" method="POST" style="display: inline;">
                 <button type="submit">Delete</button>
             </form>
-            <a href="/newPost">Edit post</a>
+            <a href="/posts/<%= post.id %>/edit">Edit post</a>
         </li>
     <% }) %>
 </ul>
+
 </body>
 </html>
