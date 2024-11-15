@@ -50,3 +50,14 @@ exports.deletePost = async (req, res) => {
     }
 };
 
+// Henter alle post
+exports.getAllPosts = async (req, res) => {
+    try{
+        const allPosts = await User.find();
+        res.render('index', {allPosts});
+    }catch(err){
+        res.status(500).send('Error getting all post:', err);
+        console.error('Error getting all post');
+    }
+}
+

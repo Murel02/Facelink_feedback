@@ -15,8 +15,7 @@ exports.createUser = async (req, res) => {
             password: hashedPassword
         });
 
-        await user.save();
-        res.status(201).json(user);
+        await newUser.save();
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -61,14 +60,5 @@ exports.getUserPosts = async (req, res) => {
     }
 };
 
-// Henter alle post
-exports.getAllPosts = async (req, res) => {
-    try{
-        const allPosts = await User.find();
-        res.render('index', {allPosts});
-    }catch(err){
-        res.status(500).send('Error getting all post:', err);
-        console.error('Error getting all post');
-    }
-}
+
 
