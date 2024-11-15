@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face view</title>
+</head>
+<body>
+<h1>Face view</h1>
+<a href="/newPost">Create post</a>
+<ul>
+    <% users.forEach(post => { %>
+        <li>
+            <span class="label"></span> <% post.id %>
+            <span class="label"></span> <% post.text %>
+            <span class="label">Time</span> <% post.timestamp %>
+            <span class="label">Likes</span> <% post.likes %>
+            <form action="/post/<%= post.id %>/like" method="GET" style="display: inline;">
+                <button type="submit">Like</button>
+            </form>
+            <form action="/post/<%= post.id %>/delete" method="POST" style="display: inline;">
+                <button type="submit">Delete</button>
+            </form>
+            <a href="/newPost">Edit post</a>
+        </li>
+    <% }) %>
+</ul>
+</body>
+</html>
